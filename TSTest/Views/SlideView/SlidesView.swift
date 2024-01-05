@@ -22,8 +22,8 @@ struct SlidesView: View {
                     
                     slideView(index: index)
                         .cornerRadius(20)
-                        .contentShape(Rectangle())
                         .padding(.bottom, 150)
+                        .contentShape(RoundedRectangle(cornerRadius: 20))
                         .offset(y: viewModel.slides[index].offset + getOffset(index: index))
                         .gesture(DragGesture(minimumDistance: 0)
                             .onChanged({ value in
@@ -169,7 +169,6 @@ struct SlidesView: View {
                 .fill(Color.white)
                 .border(Color(uiColor: .systemGray5), width: 1)
         )
-        .contentShape(Rectangle())
     }
 }
 
