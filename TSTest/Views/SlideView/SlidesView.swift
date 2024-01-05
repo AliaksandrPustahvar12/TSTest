@@ -78,13 +78,13 @@ struct SlidesView: View {
           }
     }
     
-    func onChange(value: DragGesture.Value, index: Int) {
+   private func onChange(value: DragGesture.Value, index: Int) {
         if value.translation.height < 0 {
             viewModel.slides[index].offset = value.translation.height
         }
     }
     
-    func onEnd(value: DragGesture.Value, index: Int) {
+   private func onEnd(value: DragGesture.Value, index: Int) {
         if index == viewModel.slides.count - 1 {
             if -value.translation.height > 250 {
                 viewModel.slides[index].offset = -UIScreen.main.bounds.height
@@ -110,7 +110,7 @@ struct SlidesView: View {
         }
     }
     
-    func nextButton() {
+   private func nextButton() {
         withAnimation {
             viewModel.slides[currentIndex].offset = -UIScreen.main.bounds.height
         }
@@ -129,7 +129,7 @@ struct SlidesView: View {
         }
     }
     
-    func previosButton() {
+   private func previosButton() {
         withAnimation {
             viewModel.slides[currentIndex - 1].offset = 0
         }
@@ -140,15 +140,15 @@ struct SlidesView: View {
         currentIndex -= 1
     }
     
-    func getWidth(index: Int) -> CGFloat {
+   private func getWidth(index: Int) -> CGFloat {
         return  UIScreen.main.bounds.width - 80 - CGFloat(((index - viewModel.swipedSlides) * 20))
     }
    
-    func getOffset(index: Int) -> CGFloat {
+   private func getOffset(index: Int) -> CGFloat {
             return CGFloat((index - viewModel.swipedSlides) * 10)
     }
     
-    func slideView(index: Int) -> some View {
+   private func slideView(index: Int) -> some View {
         VStack {
             viewModel.slides[index].image
                 .resizable()

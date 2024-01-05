@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class SlidesViewModel: ObservableObject {
+final class SlidesViewModel: ObservableObject {
     
    @Published var slides = [
         SlideModel(id: 1,
